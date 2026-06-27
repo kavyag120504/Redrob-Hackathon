@@ -23,6 +23,9 @@ python scripts/precompute.py --candidates ./candidates.jsonl
 
 # 2. the ranking step — this is the single reproduce command (Stage-3 reproduced)
 python rank.py --candidates ./candidates.jsonl --out ./submission.csv
+
+# 3. Launch the Explainable AI Dashboard (Optional but recommended)
+streamlit run app.py
 ```
 
 Step 2 runs in well under 5 minutes on CPU because the expensive embedding work
@@ -200,6 +203,7 @@ score is retained on every candidate as an interpretable fallback and sanity che
 
 ```
 rank.py                     # single reproduce command (Stage-3 entry point)
+app.py                      # Streamlit interactive explainability dashboard
 src/redrob_ranker/          # the package (one module per pipeline stage)
 scripts/precompute.py       # offline embedding pre-computation
 scripts/diagnose.py         # pool-level honeypot/disqualifier audit
