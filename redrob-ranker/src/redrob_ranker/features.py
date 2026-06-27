@@ -347,14 +347,14 @@ def premium_pedigree(c: CandidateView) -> float:
     score = 0.0
     # Check Education
     for edu in c.education:
-        school = str(edu.get('school', '')).lower()
+        school = " ".join(str(edu.get('school', '')).lower().split())
         if TIER_1_RE.search(school):
             score += 0.5
             break
             
     # Check Career History for Unicorns
     for role in c.career:
-        company = str(role.get('company', '')).lower()
+        company = " ".join(str(role.get('company', '')).lower().split())
         if UNICORN_RE.search(company):
             score += 0.5
             if role.get('is_current', False):
